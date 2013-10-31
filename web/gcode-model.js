@@ -17,9 +17,9 @@ function createObjectFromGCode(gcode) {
  	function getLineGroup(line) {
  		if (layer == undefined)
  			newLayer(line);
- 		var speed = Math.round(line.e / 1000);
+ 		var speed = Math.round(line.f / 10);
  		var grouptype = (line.extruding ? 10000 : 0) + speed;
- 		var color = new THREE.Color(line.extruding ? 0xffffff : 0x0000ff);
+ 		var color = new THREE.Color(line.extruding ? 0xffff00 + (speed > 255 ? 255 : speed) : 0x0000ff);
  		if (layer.type[grouptype] == undefined) {
  			layer.type[grouptype] = {
  				type: grouptype,
